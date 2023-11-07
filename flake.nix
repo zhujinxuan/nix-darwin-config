@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "Darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -81,7 +81,7 @@
         system.configurationRevision = self.rev or self.dirtyRev or null;
 
         # fonts
-        fonts.fonts = [ pkgs.rubik ];
+        fonts.fonts = [ pkgs.rubik pkgs.fira-code-nerdfont ];
         # Used for backwards compatibility, please read the changelog before changing.
         # $ darwin-rebuild changelog
         system.stateVersion = 4;
