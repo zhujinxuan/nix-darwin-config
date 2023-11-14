@@ -81,7 +81,12 @@
         system.configurationRevision = self.rev or self.dirtyRev or null;
 
         # fonts
-        fonts.fonts = [ pkgs.rubik pkgs.nerdfonts ];
+        fonts.fonts = with pkgs; [
+          rubik
+          nerdfonts
+          fira-code
+          fira-code-symbols
+        ];
         # Used for backwards compatibility, please read the changelog before changing.
         # $ darwin-rebuild changelog
         system.stateVersion = 4;
