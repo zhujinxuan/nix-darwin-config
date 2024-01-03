@@ -86,6 +86,7 @@
           nerdfonts
           fira-code
           fira-code-symbols
+          emacs-all-the-icons-fonts
         ];
         # Used for backwards compatibility, please read the changelog before changing.
         # $ darwin-rebuild changelog
