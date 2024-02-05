@@ -97,8 +97,8 @@
       };
     in {
       # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#MacBook-Pro
-      darwinConfigurations."MacBook-Pro" =
+      # $ darwin-rebuild build --flake .#Jinxuan-MacBook-Pro
+      darwinConfigurations."Jinxuan-MacBook-Pro" =
         nix-darwin.lib.darwinSystem { modules = [ configuration ]; };
 
       # Expose the package set, including overlays, for convenience.
