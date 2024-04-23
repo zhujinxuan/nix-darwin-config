@@ -34,6 +34,13 @@
           ];
         };
 
+        # do garbage collection weekly to keep disk usage low
+        nix.gc = {
+          automatic = true;
+          interval = { Day = 7; };
+          options = "--delete-older-than 1w";
+        };
+
         # You can enable the following option to migrate to new style nixbld users
         nix.configureBuildUsers = true;
 
