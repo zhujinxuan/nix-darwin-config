@@ -54,6 +54,9 @@
           # You can enable the following option to migrate to new style nixbld users
           nix.configureBuildUsers = true;
 
+          nixpkgs.config.allowUnfree = true;
+          nixpkgs.config.allowUnfreePredicate = _: true;
+
           # Create /etc/zshrc that loads the nix-darwin environment.
           programs.zsh.enable = true; # default shell on catalina
 
@@ -98,7 +101,7 @@
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
           # fonts
-          fonts.fonts = with pkgs; [
+          fonts.packages = with pkgs; [
             rubik
             nerdfonts
             fira-code
@@ -108,16 +111,27 @@
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 4;
-
-          # The platform the configuration will be used on.
-          nixpkgs.hostPlatform = "x86_64-darwin";
         };
+
+      platformM1 = _: { nixpkgs.hostPlatform = "aarch64-darwin"; };
+      platformIntel = _: { nixpkgs.hostPlatform = "aarch64-darwin"; };
+
     in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Jinxuan-MacBook-Pro
       darwinConfigurations."Jinxuan-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+          platformIntel
+        ];
+      };
+
+      darwinConfigurations."Jinxuan-MacBookM1-Pro" = nix-darwin.lib.darwinSystem {
+        modules = [
+          configuration
+          platformM1
+        ];
       };
 
       # Expose the package set, including overlays, for convenience.
