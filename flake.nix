@@ -24,6 +24,7 @@
         # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
         nixpkgs.hostPlatform = "aarch64-darwin";
+        cromulent.services.podman.enabled = true;
       };
 
     in
