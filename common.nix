@@ -13,10 +13,13 @@
     experimental-features = "nix-command flakes";
     trusted-substituters = [
       "https://cache.nixos.org"
-      "https://haskell-language-server.cachix.org"
-      "https://emacs-osx.cachix.org"
-      "https://nequissimus.cachix.org"
       "https://devenv.cachix.org"
+      "https://cache.flox.dev"
+    ];
+
+    trusted-public-keys = [
+      "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
 
